@@ -29,12 +29,12 @@
   <!-- front-matter head_begin end -->
   <link rel="preload" href="/css/style.css" as="style">
   <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/Microsoft YaHei/Microsoft YaHei-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>【RM】电控代码规范 - Hexo</title>
-  <meta name="keywords" content="RoboMaster,文档,null">
+  <meta name="keywords" content="null">
   <meta desc name="description" content="本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。 - John Doe - Hexo">
   
 <meta property="og:type" content="article">
@@ -45,10 +45,8 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-07-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-31T11:42:32.945Z">
+<meta property="article:modified_time" content="2025-08-06T01:08:54.749Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="RoboMaster">
-<meta property="article:tag" content="文档">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -131,7 +129,7 @@ body {
   background-color: var(--color-site-body);
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -232,7 +230,7 @@ button {
   -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
 }
 #l_cover {
-  min-height: 20px;
+  min-height: 50px;
 }
 .cover-wrapper {
   top: 0;
@@ -284,7 +282,7 @@ button {
 .cover-wrapper#half {
   max-height: 640px;
   min-height: 400px;
-  height: calc(36vh - 20px + 200px);
+  height: calc(36vh - 50px + 200px);
 }
 .cover-wrapper #scroll-down {
   width: 100%;
@@ -390,7 +388,7 @@ button {
   }
 }
 .cover-wrapper .cover-body {
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 100px;
 }
 .cover-wrapper .cover-body,
@@ -783,8 +781,8 @@ button {
   }
 }
 @font-face {
-  font-family: 'UbuntuMono';
-  src: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  font-family: 'Microsoft YaHei';
+  src: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/fonts/Microsoft YaHei/Microsoft YaHei-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -801,7 +799,7 @@ button {
   z-index: 1000;
   top: 0;
   width: 100%;
-  height: 20px;
+  height: 50px;
   background: var(--color-card);
   box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
@@ -863,12 +861,12 @@ button {
   -ms-transition: all 0.28s ease;
 }
 .l_header #wrapper.sub .nav-main {
-  transform: translateY(-20px);
-  -webkit-transform: translateY(-20px);
-  -khtml-transform: translateY(-20px);
-  -moz-transform: translateY(-20px);
-  -o-transform: translateY(-20px);
-  -ms-transform: translateY(-20px);
+  transform: translateY(-50px);
+  -webkit-transform: translateY(-50px);
+  -khtml-transform: translateY(-50px);
+  -moz-transform: translateY(-50px);
+  -o-transform: translateY(-50px);
+  -ms-transform: translateY(-50px);
 }
 .l_header #wrapper .nav-sub {
   transition: all 0.28s ease;
@@ -880,7 +878,7 @@ button {
   opacity: 0;
   -webkit-opacity: 0;
   -moz-opacity: 0;
-  height: 20px;
+  height: 50px;
   width: calc(100% - 2 * 16px);
   position: absolute;
 }
@@ -904,30 +902,30 @@ button {
   position: relative;
   color: var(--color-text);
   padding-left: 24px;
-  max-height: 20px;
+  max-height: 50px;
 }
 .l_header #wrapper .nav-main .title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 0;
-  line-height: 20px;
+  line-height: 50px;
   padding: 0 24px;
   font-size: 1.25rem;
   font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
 }
 .l_header #wrapper .nav-main .title img {
-  height: 20px;
+  height: 50px;
 }
 .l_header .nav-sub {
-  max-width: 1080px;
+  max-width: 1100px;
   margin: auto;
 }
 .l_header .nav-sub .title {
   font-weight: bold;
   font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
   line-height: 1.2;
-  max-height: 20px;
+  max-height: 50px;
   white-space: normal;
   flex-shrink: 1;
 }
@@ -935,7 +933,7 @@ button {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none;
-  line-height: 20px;
+  line-height: 50px;
   align-items: center;
 }
 .l_header .switcher .s-toc {
@@ -954,7 +952,7 @@ button {
   }
 }
 .l_header .switcher >li {
-  height: 4px;
+  height: 34px;
   transition: all 0.28s ease;
   -webkit-transition: all 0.28s ease;
   -khtml-transition: all 0.28s ease;
@@ -966,7 +964,7 @@ button {
 @media screen and (max-width: 500px) {
   .l_header .switcher >li {
     margin: 0 1px;
-    height: 4px;
+    height: 34px;
   }
 }
 .l_header .switcher >li >a {
@@ -983,8 +981,8 @@ button {
   -o-justify-content: center;
   -ms-justify-content: center;
   align-items: center;
-  width: 4px;
-  height: 4px;
+  width: 34px;
+  height: 34px;
   padding: 0.85em 1.1em;
   border-radius: 100px;
   -webkit-border-radius: 100px;
@@ -1008,7 +1006,7 @@ button {
 @media screen and (max-width: 500px) {
   .l_header .switcher >li >a {
     width: 36px;
-    height: 4px;
+    height: 34px;
   }
 }
 .l_header .nav-sub .switcher {
@@ -1026,7 +1024,7 @@ button {
   display: -webkit-flex /* NEW - Chrome */;
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
   display: flex;
-  height: 20px;
+  height: 50px;
   width: 240px;
   transition: all 0.28s ease;
   -webkit-transition: all 0.28s ease;
@@ -1157,8 +1155,8 @@ button {
     -ms-transition: all 0.28s ease;
   }
   .l_header .m_search .input {
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
     margin-left: 16px;
     padding-left: 16px;
   }
@@ -1219,9 +1217,9 @@ ul.list-v {
   background: var(--color-card);
   box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
   -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
-  margin-top: -6px;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
+  margin-top: -4.5px;
+  border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
   padding: 8px 0;
 }
 ul.list-v.show {
@@ -1305,10 +1303,10 @@ ul.list-v >li>a:hover {
 }
 .l_header ul.nav-list-h>li {
   color: var(--color-list);
-  line-height: 20px;
+  line-height: 50px;
 }
 .l_header ul.nav-list-h>li >a {
-  max-height: 20px;
+  max-height: 50px;
   overflow: hidden;
   color: inherit;
 }
@@ -1501,18 +1499,25 @@ ul.list-v >li>a:hover {
 .menu-phone li ul.list-v ul {
   right: calc(100% - 0.5 * 16px);
 }
-#wrapper .m_search {
-  margin-left: auto;
-  margin-right: 16px;
+#wrapper {
+  max-width: 1100px;
+  margin: auto;
+}
+@media screen and (min-width: 2048px) {
+  #wrapper {
+    max-width: 55vw;
+  }
 }
 #wrapper .menu {
-  order: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  margin: 0 16px 0 0;
 }
-#wrapper .menu li ul.list-v {
-  right: 0;
-}
-#wrapper .menu li ul.list-v ul {
-  right: calc(100% - 0.5 * 16px);
+#wrapper .menu .list-v ul {
+  left: calc(100% - 0.5 * 16px);
 }
 .menu-phone {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -1535,6 +1540,26 @@ ul.list-v >li>a:hover {
     display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
     display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
     display: block;
+  }
+}
+.l_header {
+  max-width: 65vw;
+  left: calc((100% - 65vw) * 0.5);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+@media screen and (max-width: 2048px) {
+  .l_header {
+    max-width: 1132px;
+    left: calc((100% - 1132px) * 0.5);
+  }
+}
+@media screen and (max-width: 1132px) {
+  .l_header {
+    left: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    max-width: 100%;
   }
 }
 @media screen and (max-width: 500px) {
@@ -1668,9 +1693,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754068911229),
+    lastupdate: new Date(1754643568567),
     sidebar: {
-      for_page: ["blogger","category","tagcloud","donate"],
+      for_page: ["blogger","category"],
       for_post: ["toc"],
       webinfo: {
         lastupd: {
@@ -2096,7 +2121,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header always shadow blur show"  >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2113,7 +2138,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
+            <img no-lazy class='logo' src='https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
           
           
           
@@ -2129,13 +2154,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/" title="主页"
                   
                   
                   
                     active-action="action-home"
                   >
-                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                  <i class='fa-solid fa-folder-open fa-fw'></i>主页
                 </a>
                 
               </li>
@@ -2163,13 +2188,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                target="_blank" rel="noopener" href="https://github.com/shiki0311/" title="Github"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-https:githubcomshiki0311"
                   >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                  <i class='fab fa-github fa-fw'></i>Github
                 </a>
                 
               </li>
@@ -2187,23 +2212,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                     active-action="action-archives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
-                  
-                  
-                  
-                    active-action="action-friends"
-                  >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -2250,13 +2258,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/" title="主页"
                   
                   
                   
                     active-action="action-home"
                   >
-                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                  <i class='fa-solid fa-folder-open fa-fw'></i>主页
                 </a>
                 
               </li>
@@ -2284,13 +2292,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                target="_blank" rel="noopener" href="https://github.com/shiki0311/" title="Github"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-https:githubcomshiki0311"
                   >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                  <i class='fab fa-github fa-fw'></i>Github
                 </a>
                 
               </li>
@@ -2308,23 +2316,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                     active-action="action-archives"
                   >
                   <i class='fa-solid fa-archive fa-fw'></i>归档
-                </a>
-                
-              </li>
-            
-          
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
-                  
-                  
-                  
-                    active-action="action-friends"
-                  >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
                 </a>
                 
               </li>
@@ -2376,8 +2367,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <p class="title">Shiki's Technical Blog</p>
     
     
-      <p class="subtitle">Github ID: shiki0311</p>
-    
   </div>
   <div class='bottom'>
     <div class='menu navigation'>
@@ -2427,9 +2416,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
             
 <div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <a itemprop="url" class='author' href="/" rel="nofollow">
+  <a itemprop="url" class='author' target="_blank" href="https://github.com/shiki0311" rel="nofollow noopener">
     <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-    <p itemprop="name">请设置文章作者</p>
+    <p itemprop="name">Shiki</p>
   </a>
 </div>
 
@@ -2477,7 +2466,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="【RM】起源电控代码规范"><a href="#【RM】起源电控代码规范" class="headerlink" title="【RM】起源电控代码规范"></a>【RM】起源电控代码规范</h1><h6 id="V1-0-CREATED-BY"><a href="#V1-0-CREATED-BY" class="headerlink" title="V1.0 CREATED BY @"></a>V1.0 CREATED BY @</h6><blockquote>
+    <h1 id="【RM】起源电控代码规范"><a href="#【RM】起源电控代码规范" class="headerlink" title="【RM】起源电控代码规范"></a>【RM】起源电控代码规范</h1><h6 id="V1-0-CREATED-BY-我还是不想动-and-Shiki"><a href="#V1-0-CREATED-BY-我还是不想动-and-Shiki" class="headerlink" title="V1.0 CREATED BY @ 我还是不想动 and @ Shiki"></a>V1.0 CREATED BY @ <a target="_blank" rel="noopener" href="https://wasserwelt.github.io/">我还是不想动</a> and @ <a target="_blank" rel="noopener" href="https://github.com/shiki0311">Shiki</a></h6><blockquote>
 <p>本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。</p>
 </blockquote>
 <h3 id="格式化约定"><a href="#格式化约定" class="headerlink" title="格式化约定"></a>格式化约定</h3><blockquote>
@@ -2581,10 +2570,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-07-31T19:42:32+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-06T09:08:54+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2025年7月31日</p>
+    <p>更新于：2025年8月6日</p>
   </a>
 </div>
 
@@ -2592,10 +2581,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RoboMaster/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>RoboMaster</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%96%87%E6%A1%A3/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>文档</p></a></div>
-  <span hidden itemprop="keywords">RoboMaster 文档</span>
-
 
         
       
@@ -2800,47 +2785,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <br><br>
     
       
-        <div class="aplayer-container">
-          
-
-
-        </div>
-      
-    
-      
         <br>
         <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
           
             
-          
-            
-          
+              <a href="https://github.com/shiki0311"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+              </a>
             
           
         </div>
       
     
       
-        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-      
-    
-      
-        
-          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
-</div>
-        
-      
-    
-      
-        本站使用
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.8.0" target="_blank" class="codename">Volantis</a>
-        作为主题
-      
-    
-      
         <div class='copyright'>
-        <p><a href="/">Copyright © since 2017 XXX</a></p>
+        <p><a href="/">2025 Shiki ALL rights reserved.</a></p>
 
         </div>
       
@@ -3338,7 +3300,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/RoboMaster/","name":"RoboMaster"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】电控代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】电控代码规范","description":"本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":47,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-07-31T11:42:32.945Z","articleSection":"RoboMaster","keywords":"RoboMaster,文档","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/RoboMaster/","name":"RoboMaster"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】电控代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】电控代码规范","description":"本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":47,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-06T01:08:54.749Z","articleSection":"RoboMaster","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
