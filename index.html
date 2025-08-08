@@ -55,9 +55,9 @@
   --color-site-bg: #f4f4f4;
   --color-site-inner: #fff;
   --color-site-footer: #666;
-  --color-card: #fff;
+  --color-card: #e0e0e0;
   --color-text: #444;
-  --color-block: #f6f6f6;
+  --color-block: #e0e0e0;
   --color-inlinecode: #c74f00;
   --color-codeblock: #fff7ea;
   --color-h1: #3a3a3a;
@@ -205,7 +205,7 @@ button {
 }
 @supports (backdrop-filter: blur(20px)) {
   .blur {
-    background: rgba(255,255,255,0.9) !important;
+    background: rgba(224,224,224,0.9) !important;
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -488,7 +488,7 @@ button {
   padding-left: 36px;
   border-radius: 1.4rem;
   -webkit-border-radius: 1.4rem;
-  background: rgba(255,255,255,0.6);
+  background: rgba(224,224,224,0.6);
   backdrop-filter: blur(10px);
   border: none;
   color: var(--color-text);
@@ -499,10 +499,10 @@ button {
   }
 }
 .cover-wrapper .cover-body .m_search .input:hover {
-  background: rgba(255,255,255,0.8);
+  background: rgba(224,224,224,0.8);
 }
 .cover-wrapper .cover-body .m_search .input:focus {
-  background: #fff;
+  background: #e0e0e0;
 }
 .cover-wrapper .list-h {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -694,11 +694,11 @@ button {
   margin: 2px;
 }
 .cover-wrapper.focus .menu:hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(224,224,224,0.5);
 }
 @supports (backdrop-filter: blur(20px)) {
   .cover-wrapper.focus .menu:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(224,224,224,0.5);
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -1101,7 +1101,7 @@ button {
   line-height: 1.3;
   width: 100%;
   color: var(--color-text);
-  background: #fafafa;
+  background: #dbdbdb;
   box-shadow: none;
   -webkit-box-shadow: none;
   box-sizing: border-box;
@@ -1142,7 +1142,7 @@ button {
     width: 0;
     overflow: hidden;
     position: absolute;
-    background: #fff;
+    background: #ededed;
     transition: all 0.28s ease;
     -webkit-transition: all 0.28s ease;
     -khtml-transition: all 0.28s ease;
@@ -1689,7 +1689,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754643568567),
+    lastupdate: new Date(1754647900749),
     sidebar: {
       for_page: ["blogger","category"],
       for_post: ["toc"],
@@ -2360,7 +2360,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='top'>
     
     
-      <p class="title">Shiki's Technical Blog</p>
+      <p class="title"><br>Shiki's Technical Blog</p>
     
     
   </div>
@@ -2895,7 +2895,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <script>
-  let imgs = ["https://github.com/shiki0311/shiki0311.github.io/blob/main/img/banner_img/sentry2024.jpg?raw=true"];
+  let imgs = ["https://github.com/shiki0311/shiki0311.github.io/blob/main/img/banner_img/sentry_compressed.jpg?raw=true"];
   let index = 0;
   let IntervalParallax = null;
 
