@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-07-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-10T07:35:53.992Z">
+<meta property="article:modified_time" content="2025-08-10T08:04:15.822Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="#RoboMaster">
 <meta property="article:tag" content="#嵌入式">
@@ -1695,7 +1695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754811638779),
+    lastupdate: new Date(1754814841631),
     sidebar: {
       for_page: ["blogger","tagcloud"],
       for_post: ["toc"],
@@ -2499,6 +2499,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>在vscode中快捷添加文件头注释的方法：<strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/cbachina0/article/details/126114644">使用koroFileHeader插件</a></strong></p>
 </blockquote>
+<h5 id="1-1-3-头文件"><a href="#1-1-3-头文件" class="headerlink" title="1.1.3 头文件"></a>1.1.3 头文件</h5><p>​        <strong>(1) 头文件中适合放置接口的声明，不适合放置实现</strong></p>
+<p>​		头文件是模块（Module）或单元（Unit）的对外接口。头文件中应放置对外部的声明，如对外提供的函数声明、宏定义、类型定义等。</p>
+<p>​		要求：</p>
+<ul>
+<li><p>只有源文件内部使用的函数声明不应放在头文件中（此函数不对外开放）。</p>
+</li>
+<li><p>只有源文件内部使用的宏、枚举、结构定义尽量不放入头文件中。</p>
+</li>
+<li><p>变量定义不应放在头文件中，应放在.c文件中。</p>
+</li>
+<li><p>变量的声明尽量不要放在头文件中，亦即尽量不要使用全局变量作为接口。变量是模块或单元的内部实现细节，不应通过在头文件中声明的方式直接暴露给外部，应通过函数接口的方式进行对外暴露。 即使必须使用全局变量，也只应当在.c中定义全局变量，在.h中使用extern关键字。</p>
+<p> **(2) **</p>
+</li>
+</ul>
+<blockquote>
+<p>头文件具体写法参考： <strong>INS_Task.h</strong></p>
+</blockquote>
 <p>格式化约定</p>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://sjtu-robomaster-team.github.io/cpp-style-guide/">https://sjtu-robomaster-team.github.io/cpp-style-guide/</a></p>
@@ -2511,8 +2528,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><p>不同的语句之间要么不空行，要么空一行。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = ...;<span class="comment">//空一行</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> y = ...;</span><br><span class="line">    <span class="type">int</span> z = ...;</span><br><span class="line">&#125;<span class="comment">//空一行</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">bar</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">baz</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>**以下关于注释的规范只是建议。**格式化工具可以跳过对注释的格式化。</p>
-<ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
 <li>行注释（<code>//</code>）相较于块注释（<code>/* ... */</code>）更好。</li>
 <li>当使用行注释时，开头标记后应该有一个空格。</li>
 <li>使用行内块注释时，开符号后和闭符号前均有一个空格。多行块注释，开符号后和闭符号前均有一个新行。</li>
@@ -2523,15 +2539,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 条目上方的注释</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Foo</span> &#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;&#125; <span class="comment">// 条目尾随注释</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">(<span class="comment">/* 参数前的注释 */</span> T x)</span> </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>注释应是完整的句子，行内块注释则不用。</li>
-<li>纯注释行的注释宽度不大于 80，且算上缩进总宽度不超过 100。</li>
-</ul>
-<hr>
-<ul>
-<li><p>代码原则</p>
-<ul>
-<li>代码分层（示例）</li>
-</ul>
+<li><p>注释应是完整的句子，行内块注释则不用。</p>
+</li>
+<li><p>纯注释行的注释宽度不大于 80，且算上缩进总宽度不超过 100。</p>
 </li>
 <li><p>头文件</p>
 <ul>
@@ -2547,13 +2557,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>命名（RM习惯）</p>
 <ul>
 <li>很多</li>
-</ul>
-</li>
-<li><p>注释与格式化</p>
-<ul>
-<li>文件</li>
-<li>函数</li>
-<li>排版</li>
 </ul>
 </li>
 </ul>
@@ -2587,6 +2590,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   </a>
                 </li>
               
+                <li>
+                  <a href="https://github.com/shiki0311/origin_2025_autosentry_control" rel="external nofollow noopener noreferrer" target="_blank">
+                  起源2025赛季哨兵嵌入式代码（还有很多屎没优化）
+                  </a>
+                </li>
+              
             </ul>
           </section>
         </div>
@@ -2607,7 +2616,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-10T15:35:53+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-10T16:04:15+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2025年8月10日</p>
@@ -2741,7 +2750,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-text">代码总体原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">具体代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">1. 必须遵守的代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E6%96%87%E4%BB%B6"><span class="toc-text">1.1文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-%E6%96%B0%E5%A2%9E%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.1.1 新增的代码文件的放置位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 文件头注释</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E8%A1%8C%E5%AE%BD"><span class="toc-text">缩进和行宽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-text">代码总体原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">具体代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">1. 必须遵守的代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E6%96%87%E4%BB%B6"><span class="toc-text">1.1文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-%E6%96%B0%E5%A2%9E%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.1.1 新增的代码文件的放置位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 文件头注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-3-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">1.1.3 头文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E8%A1%8C%E5%AE%BD"><span class="toc-text">缩进和行宽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3360,7 +3369,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】起源嵌入式软件代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】起源嵌入式软件代码规范","description":"本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":44,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-10T07:35:53.992Z","keywords":"#RoboMaster,#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】起源嵌入式软件代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】起源嵌入式软件代码规范","description":"本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":44,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-10T08:04:15.822Z","keywords":"#RoboMaster,#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
