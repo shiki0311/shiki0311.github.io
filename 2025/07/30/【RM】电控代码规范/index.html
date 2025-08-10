@@ -33,20 +33,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>【RM】电控代码规范 - Hexo</title>
-  <meta name="keywords" content="null">
-  <meta desc name="description" content="本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。 - John Doe - Hexo">
+  <title>【RM】起源嵌入式软件代码规范 - Hexo</title>
+  <meta name="keywords" content="#RoboMaster,#嵌入式,null">
+  <meta desc name="description" content="本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正 - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="【RM】电控代码规范">
+<meta property="og:title" content="【RM】起源嵌入式软件代码规范">
 <meta property="og:url" content="http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。">
+<meta property="og:description" content="本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-07-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-06T01:08:54.749Z">
+<meta property="article:modified_time" content="2025-08-10T07:35:53.992Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="#RoboMaster">
+<meta property="article:tag" content="#嵌入式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -59,8 +61,8 @@
   --color-site-bg: #f4f4f4;
   --color-site-inner: #fff;
   --color-site-footer: #666;
-  --color-card: #e0e0e0;
-  --color-text: #444;
+  --color-card: #eee;
+  --color-text: #212121;
   --color-block: #e0e0e0;
   --color-inlinecode: #c74f00;
   --color-codeblock: #fff7ea;
@@ -129,7 +131,7 @@ body {
   background-color: var(--color-site-body);
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: 1.5;
+  line-height: 1.7;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -193,7 +195,7 @@ hr {
   border: 0;
   border-radius: 1px;
   -webkit-border-radius: 1px;
-  border-bottom: 1px solid rgba(68,68,68,0.1);
+  border-bottom: 1px solid rgba(33,33,33,0.1);
 }
 button,
 input {
@@ -209,7 +211,7 @@ button {
 }
 @supports (backdrop-filter: blur(20px)) {
   .blur {
-    background: rgba(224,224,224,0.9) !important;
+    background: rgba(238,238,238,0.9) !important;
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -492,7 +494,7 @@ button {
   padding-left: 36px;
   border-radius: 1.4rem;
   -webkit-border-radius: 1.4rem;
-  background: rgba(224,224,224,0.6);
+  background: rgba(238,238,238,0.6);
   backdrop-filter: blur(10px);
   border: none;
   color: var(--color-text);
@@ -503,10 +505,10 @@ button {
   }
 }
 .cover-wrapper .cover-body .m_search .input:hover {
-  background: rgba(224,224,224,0.8);
+  background: rgba(238,238,238,0.8);
 }
 .cover-wrapper .cover-body .m_search .input:focus {
-  background: #e0e0e0;
+  background: #eee;
 }
 .cover-wrapper .list-h {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -642,7 +644,7 @@ button {
   border-bottom: none;
   text-align: center;
   align-content: flex-end;
-  color: rgba(68,68,68,0.7);
+  color: rgba(33,33,33,0.7);
   font-size: 1.5rem;
 }
 @media screen and (max-width: 500px) {
@@ -698,11 +700,11 @@ button {
   margin: 2px;
 }
 .cover-wrapper.focus .menu:hover {
-  background: rgba(224,224,224,0.5);
+  background: rgba(238,238,238,0.5);
 }
 @supports (backdrop-filter: blur(20px)) {
   .cover-wrapper.focus .menu:hover {
-    background: rgba(224,224,224,0.5);
+    background: rgba(238,238,238,0.5);
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -1105,7 +1107,7 @@ button {
   line-height: 1.3;
   width: 100%;
   color: var(--color-text);
-  background: #dbdbdb;
+  background: #e9e9e9;
   box-shadow: none;
   -webkit-box-shadow: none;
   box-sizing: border-box;
@@ -1146,7 +1148,7 @@ button {
     width: 0;
     overflow: hidden;
     position: absolute;
-    background: #ededed;
+    background: #fbfbfb;
     transition: all 0.28s ease;
     -webkit-transition: all 0.28s ease;
     -khtml-transition: all 0.28s ease;
@@ -1693,9 +1695,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754649389340),
+    lastupdate: new Date(1754811638779),
     sidebar: {
-      for_page: ["blogger","category"],
+      for_page: ["blogger","tagcloud"],
       for_post: ["toc"],
       webinfo: {
         lastupd: {
@@ -2171,11 +2173,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/tags/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-tags"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2275,11 +2277,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/tags/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-tags"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2409,33 +2411,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        【RM】电控代码规范
+        【RM】起源嵌入式软件代码规范
       </h1>
       <div class='new-meta-box'>
         
           
             
-<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <a itemprop="url" class='author' target="_blank" href="https://github.com/shiki0311" rel="nofollow noopener">
-    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-    <p itemprop="name">Shiki</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class='new-meta-item category'>
-    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/RoboMaster/">RoboMaster</a>
-    
-      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/RoboMaster/" itemprop="url"><span itemprop="name">RoboMaster</span></a>
-      </span>
-    
-  </div>
-
 
           
         
@@ -2466,10 +2447,60 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="【RM】起源电控代码规范"><a href="#【RM】起源电控代码规范" class="headerlink" title="【RM】起源电控代码规范"></a>【RM】起源电控代码规范</h1><h6 id="V1-0-CREATED-BY-我还是不想动-and-Shiki"><a href="#V1-0-CREATED-BY-我还是不想动-and-Shiki" class="headerlink" title="V1.0 CREATED BY @ 我还是不想动 and @ Shiki"></a>V1.0 CREATED BY @ <a target="_blank" rel="noopener" href="https://wasserwelt.github.io/">我还是不想动</a> and @ <a target="_blank" rel="noopener" href="https://github.com/shiki0311">Shiki</a></h6><blockquote>
-<p>本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。</p>
+    <h6 id="V1-0-CREATED-BY-我还是不想动-and-Shiki"><a href="#V1-0-CREATED-BY-我还是不想动-and-Shiki" class="headerlink" title="V1.0 CREATED BY @ 我还是不想动 and @ Shiki"></a><strong>V1.0 CREATED BY @ <a target="_blank" rel="noopener" href="https://wasserwelt.github.io/">我还是不想动</a> and @ <a target="_blank" rel="noopener" href="https://github.com/shiki0311">Shiki</a></strong></h6><blockquote>
+<p>本文为起源Origin战队嵌入式软件代码规范V1.0，主要分为两大部分，分别为代码总体原则和具体代码规范，其中具体代码规范分为必须遵守的编程规则和非强制要求的规则。</p>
 </blockquote>
-<h3 id="格式化约定"><a href="#格式化约定" class="headerlink" title="格式化约定"></a>格式化约定</h3><blockquote>
+<h2 id="代码总体原则"><a href="#代码总体原则" class="headerlink" title="代码总体原则"></a>代码总体原则</h2><ul>
+<li><strong>清晰可维护</strong></li>
+</ul>
+<p>​	    在RM中，一般来说除去部分应用层代码（电机控制逻辑、UI绘制等），整体的嵌入式代码框架会沿用很多个赛季，因此要求代码必须清晰简洁、易于维护（你肯定不想退休以后半夜被小灯打电话问你这里写的什么shit)。在C板性能过剩的前提下，代码的可阅读性要高于性能，只有确定性能是瓶颈时，才应该主动优化。</p>
+<blockquote>
+<p>对于RM嵌入式代码，保持可维护性最好的方法就是<strong>及时清除废弃代码！！！！</strong></p>
+</blockquote>
+<ul>
+<li><strong>风格一致</strong></li>
+</ul>
+<p>​		队伍内保持一致的风格进行开发，可以大幅提升代码交接效率。代码风格具体体现在命名规范、代码格式等，具体下文会阐述。</p>
+<h2 id="具体代码规范"><a href="#具体代码规范" class="headerlink" title="具体代码规范"></a>具体代码规范</h2><h3 id="1-必须遵守的代码规范"><a href="#1-必须遵守的代码规范" class="headerlink" title="1. 必须遵守的代码规范"></a>1. 必须遵守的代码规范</h3><hr>
+<h4 id="1-1文件"><a href="#1-1文件" class="headerlink" title="1.1文件"></a>1.1文件</h4><h5 id="1-1-1-新增的代码文件的放置位置"><a href="#1-1-1-新增的代码文件的放置位置" class="headerlink" title="1.1.1 新增的代码文件的放置位置"></a>1.1.1 新增的代码文件的放置位置</h5><table>
+<thead>
+<tr>
+<th align="center">新增文件的类型</th>
+<th align="center">在文件资源管理器中的位置</th>
+<th align="center">在keil5工程中的位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">freertos任务（XXX_task.c&#x2F;h)</td>
+<td align="center">&#x2F;项目名&#x2F;Tasks&#x2F;</td>
+<td align="center">&#x2F;项目名&#x2F;Tasks&#x2F;</td>
+</tr>
+<tr>
+<td align="center">供task文件及其他应用层文件调用的板级支持包（bsp_xxx.c&#x2F;h)</td>
+<td align="center">&#x2F;项目名&#x2F;BSP&#x2F;</td>
+<td align="center">&#x2F;项目名&#x2F;BSP&#x2F;</td>
+</tr>
+<tr>
+<td align="center">第三方中间层库文件（如fifo.c&#x2F;h)</td>
+<td align="center">&#x2F;项目名&#x2F;support&#x2F;</td>
+<td align="center">&#x2F;项目名&#x2F;support&#x2F;</td>
+</tr>
+<tr>
+<td align="center">除freertos以外的其他应用层代码（如pid.c&#x2F;h)</td>
+<td align="center">&#x2F;项目名&#x2F;App&#x2F;</td>
+<td align="center">&#x2F;项目名&#x2F;App&#x2F;</td>
+</tr>
+</tbody></table>
+<h5 id="1-1-2-文件头注释"><a href="#1-1-2-文件头注释" class="headerlink" title="1.1.2 文件头注释"></a>1.1.2 文件头注释</h5><ul>
+<li>新增头文件&#x2F;源文件尽量在文件最上方添加注释，如：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> ******************************************************************************</span></span><br><span class="line"><span class="comment"> * @file    referee.h</span></span><br><span class="line"><span class="comment"> * @author  Shiki</span></span><br><span class="line"><span class="comment"> * @version V1.3.0</span></span><br><span class="line"><span class="comment"> * @date    2025/03/1</span></span><br><span class="line"><span class="comment"> * @brief   Header file of referee.c</span></span><br><span class="line"><span class="comment"> ******************************************************************************</span></span><br><span class="line"><span class="comment"> * @attention</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *   依据裁判系统 串口协议附录 V1.7</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> ******************************************************************************</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在vscode中快捷添加文件头注释的方法：<strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/cbachina0/article/details/126114644">使用koroFileHeader插件</a></strong></p>
+</blockquote>
+<p>格式化约定</p>
+<blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://sjtu-robomaster-team.github.io/cpp-style-guide/">https://sjtu-robomaster-team.github.io/cpp-style-guide/</a></p>
 </blockquote>
 <h4 id="缩进和行宽"><a href="#缩进和行宽" class="headerlink" title="缩进和行宽"></a>缩进和行宽</h4><ul>
@@ -2546,7 +2577,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
                 <li>
                   <a href="https://sjtu-robomaster-team.github.io/cpp-style-guide/" rel="external nofollow noopener noreferrer" target="_blank">
-                  交龙博客
+                  交龙C++代码风格指南
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="https://blog.csdn.net/m0_38106923/article/details/105042594?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522d0e3a2eebbe7b7c5e1430d9ee7fec2de%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=d0e3a2eebbe7b7c5e1430d9ee7fec2de&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105042594-null-null.142^v102^pc_search_result_base1&utm_term=%E5%8D%8E%E4%B8%BAC%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83&spm=1018.2226.3001.4187" rel="external nofollow noopener noreferrer" target="_blank">
+                  华为C语言编程规范（精华总结）
                   </a>
                 </li>
               
@@ -2570,10 +2607,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-06T09:08:54+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-10T15:35:53+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2025年8月6日</p>
+    <p>更新于：2025年8月10日</p>
   </a>
 </div>
 
@@ -2581,6 +2618,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RoboMaster/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>#RoboMaster</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>#嵌入式</p></a></div>
+  <span hidden itemprop="keywords">#RoboMaster #嵌入式</span>
+
 
         
       
@@ -2592,7 +2633,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】电控代码规范 - Hexo&summary=本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】起源嵌入式软件代码规范 - Hexo&summary=本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正"
           
           >
           
@@ -2604,7 +2645,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】电控代码规范 - Hexo&summary=本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】起源嵌入式软件代码规范 - Hexo&summary=本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正"
           
           >
           
@@ -2616,7 +2657,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】电控代码规范 - Hexo&summary=本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/&title=【RM】起源嵌入式软件代码规范 - Hexo&summary=本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正"
           
           >
           
@@ -2700,7 +2741,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%BA%A6%E5%AE%9A"><span class="toc-text">格式化约定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E8%A1%8C%E5%AE%BD"><span class="toc-text">缩进和行宽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-text">代码总体原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">具体代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">1. 必须遵守的代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E6%96%87%E4%BB%B6"><span class="toc-text">1.1文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-%E6%96%B0%E5%A2%9E%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.1.1 新增的代码文件的放置位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 文件头注释</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E8%A1%8C%E5%AE%BD"><span class="toc-text">缩进和行宽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3169,6 +3210,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 
+        <style>
+  #post-body p {
+    text-indent: 2em;
+  }
+  #post-body .new-meta-box p,
+  #post-body .note p,
+  #post-body .prev-next p,
+  #post-body .tag p,
+  #post-body blockquote p,
+  #post-body details p,
+  #post-body p.p,
+  #post-body .tab-pane .checkbox
+  #post-body section p {
+    text-indent: initial;
+  }
+</style>
+
+
+
 </pjax>
 
 <script>
@@ -3300,7 +3360,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/RoboMaster/","name":"RoboMaster"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】电控代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】电控代码规范","description":"本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":47,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-06T01:08:54.749Z","articleSection":"RoboMaster","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】起源嵌入式软件代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】起源嵌入式软件代码规范","description":"本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":44,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-10T07:35:53.992Z","keywords":"#RoboMaster,#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

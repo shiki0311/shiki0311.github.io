@@ -55,8 +55,8 @@
   --color-site-bg: #f4f4f4;
   --color-site-inner: #fff;
   --color-site-footer: #666;
-  --color-card: #e0e0e0;
-  --color-text: #444;
+  --color-card: #eee;
+  --color-text: #212121;
   --color-block: #e0e0e0;
   --color-inlinecode: #c74f00;
   --color-codeblock: #fff7ea;
@@ -125,7 +125,7 @@ body {
   background-color: var(--color-site-body);
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: 1.5;
+  line-height: 1.7;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -189,7 +189,7 @@ hr {
   border: 0;
   border-radius: 1px;
   -webkit-border-radius: 1px;
-  border-bottom: 1px solid rgba(68,68,68,0.1);
+  border-bottom: 1px solid rgba(33,33,33,0.1);
 }
 button,
 input {
@@ -205,7 +205,7 @@ button {
 }
 @supports (backdrop-filter: blur(20px)) {
   .blur {
-    background: rgba(224,224,224,0.9) !important;
+    background: rgba(238,238,238,0.9) !important;
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -488,7 +488,7 @@ button {
   padding-left: 36px;
   border-radius: 1.4rem;
   -webkit-border-radius: 1.4rem;
-  background: rgba(224,224,224,0.6);
+  background: rgba(238,238,238,0.6);
   backdrop-filter: blur(10px);
   border: none;
   color: var(--color-text);
@@ -499,10 +499,10 @@ button {
   }
 }
 .cover-wrapper .cover-body .m_search .input:hover {
-  background: rgba(224,224,224,0.8);
+  background: rgba(238,238,238,0.8);
 }
 .cover-wrapper .cover-body .m_search .input:focus {
-  background: #e0e0e0;
+  background: #eee;
 }
 .cover-wrapper .list-h {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -638,7 +638,7 @@ button {
   border-bottom: none;
   text-align: center;
   align-content: flex-end;
-  color: rgba(68,68,68,0.7);
+  color: rgba(33,33,33,0.7);
   font-size: 1.5rem;
 }
 @media screen and (max-width: 500px) {
@@ -694,11 +694,11 @@ button {
   margin: 2px;
 }
 .cover-wrapper.focus .menu:hover {
-  background: rgba(224,224,224,0.5);
+  background: rgba(238,238,238,0.5);
 }
 @supports (backdrop-filter: blur(20px)) {
   .cover-wrapper.focus .menu:hover {
-    background: rgba(224,224,224,0.5);
+    background: rgba(238,238,238,0.5);
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -1101,7 +1101,7 @@ button {
   line-height: 1.3;
   width: 100%;
   color: var(--color-text);
-  background: #dbdbdb;
+  background: #e9e9e9;
   box-shadow: none;
   -webkit-box-shadow: none;
   box-sizing: border-box;
@@ -1142,7 +1142,7 @@ button {
     width: 0;
     overflow: hidden;
     position: absolute;
-    background: #ededed;
+    background: #fbfbfb;
     transition: all 0.28s ease;
     -webkit-transition: all 0.28s ease;
     -khtml-transition: all 0.28s ease;
@@ -1689,9 +1689,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754649389340),
+    lastupdate: new Date(1754811638779),
     sidebar: {
-      for_page: ["blogger","category"],
+      for_page: ["blogger","tagcloud"],
       for_post: ["toc"],
       webinfo: {
         lastupd: {
@@ -2167,11 +2167,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/tags/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-tags"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2271,11 +2271,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/tags/" title="分类"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-tags"
                   >
                   <i class='fa-solid fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2392,6 +2392,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
         
           
         
@@ -2421,13 +2423,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     <h2 class="article-title"  itemprop="name headline">
       <a href="/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"  itemprop="url">
-        【RM】电控代码规范
+        【RM】起源嵌入式软件代码规范
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
-      本文为2025赛季起源Origin战队电控代码规范V1.0，尚未完善，如有错误，望评论区指正。
+      本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正
     
   </div>
   
@@ -2435,14 +2437,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div>
         
         <time itemprop="dateCreated datePublished" datetime="2025-07-30T00:00:00+08:00">2025-07-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/RoboMaster/">RoboMaster</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/RoboMaster/" itemprop="url"><span itemprop="name">RoboMaster</span></a>
-            </span>
-          
         
       </div>
       
@@ -2508,24 +2502,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
   
-  <section class="widget category desktop mobile pjax">
+  <section class="widget tagcloud desktop mobile pjax">
     
   <header>
     
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>标签</span></a>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/RoboMaster/" href="/categories/RoboMaster/"
-            active-action="action-categoriesRoboMaster"
-            ><div class='name'>RoboMaster</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+      <a href="/tags/RoboMaster/" style="font-size: 14px; color: #999">#RoboMaster</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 14px; color: #999">#嵌入式</a>
     </div>
   </section>
 
