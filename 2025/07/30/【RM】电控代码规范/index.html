@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-07-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-10T11:56:42.362Z">
+<meta property="article:modified_time" content="2025-08-12T11:14:54.109Z">
 <meta property="article:author" content="Shiki">
 <meta property="article:tag" content="#RoboMaster">
 <meta property="article:tag" content="#嵌入式">
@@ -1695,7 +1695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1754829454263),
+    lastupdate: new Date(1754997329267),
     sidebar: {
       for_page: ["blogger","tagcloud"],
       for_post: ["toc"],
@@ -2502,47 +2502,437 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h5 id="1-1-3-头文件"><a href="#1-1-3-头文件" class="headerlink" title="1.1.3 头文件"></a>1.1.3 头文件</h5><blockquote>
 <p>一个规范的头文件例子： <a target="_blank" rel="noopener" href="https://github.com/shiki0311/origin_2025_autosentry_control/blob/developing/Robot/Tasks/INS_Task.h"><strong>INS_Task.h</strong></a></p>
 </blockquote>
-<p>​        <strong>(1) 头文件中适合放置接口的声明，不适合放置实现</strong></p>
+<p><strong>（1）头文件中适合放置接口的声明，不适合放置实现</strong></p>
 <p>​		头文件是模块（Module）或单元（Unit）的对外接口。头文件中应放置对外部的声明，如对外提供的函数声明、宏定义、类型定义等。</p>
 <p>​		要求：</p>
 <p>​     1. 只有源文件内部使用的函数声明不应放在头文件中（此函数不对外开放）。</p>
 <p>​     2. 只有源文件内部使用的宏、枚举、结构定义尽量不放入头文件中。</p>
 <p>​     3. 变量定义不应放在头文件中，应放在.c文件中。</p>
 <p>​     4. 变量的声明尽量不要放在头文件中，亦即尽量不要使用全局变量作为接口。变量是模块或单元的内部实现细节，不应通过在头文件中声明的方式直接暴露给外部，应通过函数接口的方式进行对外暴露。 即使必须使用全局变量，也只应当在.c中定义全局变量，然后在.h中使用extern关键字声明。</p>
-<p>​	  <strong>(2) 头文件应职责单一，简化依赖</strong> </p>
+<p><strong>（2）头文件应职责单一，简化依赖</strong> </p>
 <p>​		头文件过于复杂，依赖过于复杂是导致编译时间过长的主要原因。队内很多现有代码中头文件过大，职责过多，大大增加了维护成本。简化头文件的一个很好的做法是<strong>不要包含用不到的头文件！！！！</strong></p>
 <p>​		反面案例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;VXWORKS.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;KERNELLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;SEMLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;INTLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TASKLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;MSGQLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;STDARG.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;FIOLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;STDIO.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;STDLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;CTYPE.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;STRING.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ERRNOLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TIMERS.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;MEMLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TIME.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;WDLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;SYSLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TASKHOOKLIB.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;REBOOTLIB.H&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">short</span> WORD;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>​		这个头文件不但定义了基本数据类型WORD，还包含了stdio.h syslib.h等等不常用的头文件。如果工程中有10000个源文件，而WORD又是每一个文件必须包含的，从而导致stdio.h&#x2F;syslib.h等可能被不必要的展开了几千次，大大增加了工程的编译时间。</p>
-<p>​		<strong>(3) 头文件应向稳定的方向包含</strong></p>
+<p><strong>（3）头文件应向稳定的方向包含</strong></p>
 <p>​		头文件的包含关系是一种依赖，一般来说，应当让不稳定的模块依赖稳定的模块，从而当不稳定的模块发生变化时，不会影响（编译）稳定的模块。</p>
 <p>​		就RM嵌入式代码来说，依赖的方向应该是： 应用层（TASK文件夹和APP文件夹下的代码）依赖于中间件（板级支持包和freertos接口），中间件依赖于HAL库。</p>
-<p>​	<strong>（4）每一个 .c 文件应有一个同名 .h 文件，用于声明需要对外公开的接口</strong></p>
-<p>​	<strong>（5）禁止头文件循环依赖</strong></p>
+<p><strong>（4）每一个 .c 文件应有一个同名 .h 文件，用于声明需要对外公开的接口</strong></p>
+<p><strong>（5）禁止头文件循环依赖</strong></p>
 <p>​	头文件循环依赖，指a.h包含b.h，b.h包含c.h，c.h包含a.h之类导致任何一个头文件修改，都导致所有包含了a.h&#x2F;b.h&#x2F;c.h的代码全部重新编译一遍。而如果是单向依赖，如a.h包含b.h，b.h包含c.h，而c.h不包含任何头文件，则修改a.h不会导致包含了b.h&#x2F;c.h的源代码重新编译。</p>
-<p>​	<strong>（6）编写包含保护宏</strong></p>
+<p><strong>（6）编写时包含保护宏</strong></p>
 <p>​		在单个源文件中当同一个头文件被多次包含（直接或间接）时，包含保护宏会确保该头文件的内容<strong>只被预处理和编译一次</strong>，避免重复定义错误。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> INS_Task_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INS_Task_H</span></span><br></pre></td></tr></table></figure>
-
-
 
 <h5 id="1-1-4-源文件"><a href="#1-1-4-源文件" class="headerlink" title="1.1.4 源文件"></a><strong>1.1.4 源文件</strong></h5><blockquote>
 <p>一个相对规范的源文件例子：<a target="_blank" rel="noopener" href="https://github.com/shiki0311/origin_2025_autosentry_control/blob/developing/Robot/Tasks/Chassis_Task.c">Chassis_Task.c</a></p>
 </blockquote>
-<p>格式化约定</p>
+<p><strong>（1）老生常谈：废弃代码（没有被调用的函数和变量)  要及时清除！！！</strong></p>
+<p><strong>（2）与头文件相同，源文件里面也不要包含用不到的头文件！！！</strong></p>
+<p><strong>（3）源程序中关系较为紧密的代码应尽可能相邻</strong></p>
+<p>   例如，功率控制（功率读取、处理功率、输出速度），底盘控制（跟头、解算、电机输出）</p>
+<p><strong>（4）重复代码应该尽可能提炼成函数</strong></p>
+<p>​        当一段代码重复两次时，即应考虑消除重复，当代码重复超过三次时，应当立刻着手消除重复。突然增加的新功能容易导致复制粘贴微调，从而代码重复量增加。</p>
 <blockquote>
+<p>在我们的代码中，重复实现的例子有键盘操作、遥控器操作、pid计算等等，这些可以通过封装成函数传入合适参数进行去重复化。</p>
+<p>下面这个例子是我发现上赛季的底盘控制任务在底盘跟随云台运动时，在导航模式和遥控器模式下会写一遍一样的逻辑，造成代码冗余。修改后如下：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in Chassis_Task.c</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">chassis_follow_gimbal_handler</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">static</span> fp32 chassis_follow_gimbal_zero_actual = CHASSIS_FOLLOW_GIMBAL_ANGLE_ZERO;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (chassis_control.chassis_follow_gimbal_zerochange == TRUE)</span><br><span class="line">	&#123;</span><br><span class="line">		chassis_follow_gimbal_zero_actual = Angle_Z_Suit_ZERO_Get(gimbal_m6020[<span class="number">0</span>].ENC_angle);</span><br><span class="line">		chassis_control.chassis_follow_gimbal_zerochange = FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	chassis_control.chassis_follow_gimbal_angle = Limit_To_180((<span class="type">float</span>)(((<span class="type">uint16_t</span>)gimbal_m6020[<span class="number">0</span>].ENC_angle + (<span class="number">8192</span> - (<span class="type">uint16_t</span>)chassis_follow_gimbal_zero_actual)) % <span class="number">8192</span>) / <span class="number">8192.0f</span> * <span class="number">360.0f</span>);</span><br><span class="line">	fp32 chassis_yaw_nearest_zero_rad = -(chassis_control.chassis_follow_gimbal_angle + Limit_To_180((<span class="type">float</span>)(chassis_follow_gimbal_zero_actual - CHASSIS_FOLLOW_GIMBAL_ANGLE_ZERO) / <span class="number">8192.0f</span> * <span class="number">360.0f</span>)) / <span class="number">180.0f</span> * <span class="number">3.14159f</span>;</span><br><span class="line"></span><br><span class="line">	Set_FollowGimbal_Wz(chassis_control.chassis_follow_gimbal_angle, &amp;chassis_control.wz);</span><br><span class="line">	Set_Chassis_VxVy(chassis_yaw_nearest_zero_rad, &amp;chassis_control.vx, &amp;chassis_control.vy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（5）在源文件范围内声明和定义的所有函数，除非外部可见，否则应该增加static关键字</strong></p>
+<p>​		 如果一个函数只是在同一文件中的其他地方调用，那么就用static声明。使用static确保只是在声明它的文件中是可见的，并且避免了 和其他文件或库中的相同标识符发生混淆的可能性。</p>
+<p><strong>（6）在源文件范围内使用的结构体，不应声明在头文件</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in Chassis_Task.c</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	REMOTE_CONTROL,</span><br><span class="line">	NAV_NORMAL_MODE,</span><br><span class="line">	HURT,</span><br><span class="line">	UPHILL_START,</span><br><span class="line">	ON_HILL</span><br><span class="line">&#125; <span class="type">chassis_max_power_control_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	FOLLOW_GIMBAL, <span class="comment">// 底盘跟随云台移动模式</span></span><br><span class="line">	ROTATE,		   <span class="comment">// 小陀螺移动模式</span></span><br><span class="line">	CHASSIS_SAFE   <span class="comment">// 失能模式</span></span><br><span class="line">&#125; <span class="type">chassis_mode_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（7）少用全局变量</strong></p>
+<p>​		在嵌入式开发中，全局变量易于调试，因此很多时候被大量使用。但是对于代码来讲，很多全局变量都是不必要的，并且减少全局变量可以节约flash和SRAM空间。</p>
+<p>​		减少全局变量的方法：<strong>通过函数参数传递数据</strong>、使用<strong>static</strong>限制到更小的作用域内（函数，复合语句，代码块）、将不需要延长生命周期的全局变量<strong>变为局部变量</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in Chassis_Task.c</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">Chassis_Motor_Data_Update</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">static</span> <span class="type">const</span> <span class="type">float</span> lpf_ratio = <span class="number">0.0f</span>;  </span><br><span class="line">	<span class="type">static</span> fp32 chassis_m3508_last_speed[<span class="number">4</span>]; <span class="comment">//使用static限制作用域到函数内 </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">uint8_t</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		chassis_m3508[i].speed = motor_measure_chassis[i].speed_rpm;</span><br><span class="line"></span><br><span class="line">		chassis_m3508[i].speed = (chassis_m3508[i].speed) * (<span class="number">1</span> - lpf_ratio) + chassis_m3508_last_speed[i] * lpf_ratio;</span><br><span class="line">		chassis_m3508_last_speed[i] = motor_measure_chassis[i].speed_rpm;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传递结构体指针： 在RTOS中，通过消息队列或任务参数传递数据，而非依赖全局变量：</span></span><br><span class="line"><span class="comment">// FreeRTOS 示例</span></span><br><span class="line">xQueueSend(data_queue, &amp;sensor_data, portMAX_DELAY);</span><br></pre></td></tr></table></figure>
+
+<p><strong>（6）必须显式初始化变量</strong>，<strong>严禁使用未经初始化的变量作为右值</strong> </p>
+<p>​	在首次使用前初始化变量，初始化的地方离使用的地方越近越好。</p>
+<p><strong>（7）明确全局变量的初始化顺序，避免跨模块的初始化依赖</strong> </p>
+<p>​		系统启动阶段，使用全局变量前，要考虑到该全局变量在什么时候初始化，使用全局变量和初始化全局变量，两者之间的时序关系，谁先谁后，一定要分析清楚，不然后果往往是低级而又灾难性的。</p>
+<p><strong>（8）尽量减少没有必要的数据类型默认转换与强制转换</strong></p>
+<p>​	当进行数据类型强制转换时，其数据的意义、转换后的取值等都有可能发生变化，而这些细节若考虑不周，就很有可能留下隐患。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误示例：如下赋值，多数编译器不产生告警，但值的含义还是稍有变化。</span></span><br><span class="line"><span class="type">char</span> ch;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span> exam;</span><br><span class="line">ch = <span class="number">-1</span>;</span><br><span class="line">exam = ch; <span class="comment">// 编译器不产生告警，此时exam为0xFFFF。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-函数"><a href="#1-2-函数" class="headerlink" title="1.2 函数"></a>1.2 函数</h4><p><strong>（1）一个函数仅完成一件功能</strong></p>
+<p>​	将没有关联或者关联很弱的语句放到同一函数中，会导致函数职责不明确，难以理解，难以测试和改动。</p>
+<p>​	一个函数做一件事的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in Gimbal_Task.c</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Check_Pitch_Electronic_Limit</span><span class="params">(<span class="type">gimbal_motor_control_mode_t</span> mode)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ((DM_pitch_motor_data.p_int &lt; PITCH_ECD_ANGLE_MIN &amp;&amp; DM_pitch_motor_data.INS_speed_set &gt; <span class="number">0</span>) || (DM_pitch_motor_data.p_int &gt; PITCH_ECD_ANGLE_MAX &amp;&amp; DM_pitch_motor_data.INS_speed_set &lt; <span class="number">0</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (mode == POSITION)</span><br><span class="line">            DM_pitch_motor_data.INS_angle_set = DM_pitch_motor_data.INS_angle; <span class="comment">// 位置模式下一越过电子限位，pitch轴目标角度就设置为当前角度</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mode == SPEED)</span><br><span class="line">            DM_pitch_motor_data.INS_speed_set = <span class="number">0</span>; <span class="comment">// 速度模式下一越过电子限位，pitch轴目标速度就设置为0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）避免函数过长（不超过 50 行的非空非注释行）</strong> </p>
+<p>​		过长的函数往往意味着函数功能不单一，过于复杂。</p>
+<blockquote>
+<p>在RM中，某些顺序执行的往往逐渐拓展变长，如一键取矿、飞镖发射,这些函数可以尽量拆成几个功能更细化的函数，如实在无法拆分，也要写清楚注释。</p>
+</blockquote>
+<p><strong>（3）检查函数所有非参数输入的有效性，如数据文件、公共变量等</strong></p>
+<p>​		函数的输入主要有两种：一种是参数输入；另一种是全局变量、数据文件的输入，即非参数输入。函数在使用输入参数之前，若输入无法保证可靠性，应进行有效性检查。</p>
+<p><strong>（4）函数不变参数使用const</strong></p>
+<p>​		不变的值更易于理解&#x2F;跟踪和分析，把const作为默认选项，在编译时会对其进行检查，使代码更牢固&#x2F;更安全。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">chassis_vector_to_mecanum_wheel_speed</span><span class="params">(<span class="type">const</span> fp32 vx_set, <span class="type">const</span> fp32 vy_set, <span class="type">const</span> fp32 wz_set, fp32 *wheel0, fp32 *wheel1, fp32 *wheel2, fp32 *wheel3, <span class="type">chassis_mode_t</span> mode)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (wheel0 == <span class="literal">NULL</span> || wheel1 == <span class="literal">NULL</span> || wheel2 == <span class="literal">NULL</span> || wheel3 == <span class="literal">NULL</span> || mode == CHASSIS_SAFE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	*wheel0 = (+vx_set + vy_set) - MOTOR_DISTANCE_TO_CENTER * wz_set;</span><br><span class="line">	*wheel1 = (+vx_set - vy_set) - MOTOR_DISTANCE_TO_CENTER * wz_set;</span><br><span class="line">	*wheel2 = (-vx_set - vy_set) - MOTOR_DISTANCE_TO_CENTER * wz_set;</span><br><span class="line">	*wheel3 = (-vx_set + vy_set) - MOTOR_DISTANCE_TO_CENTER * wz_set;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-命名"><a href="#1-3-命名" class="headerlink" title="1.3 命名"></a>1.3 命名</h4><p><strong>（1）起源命名标准</strong></p>
+<p>小写字母+下划线（snake_case）</p>
+<p>全大写+下划线（SCREAMING_SNAKE_CASE）</p>
+<p>大驼峰（CamelCase）</p>
+<p>小驼峰（camelCase）</p>
+<table>
+<thead>
+<tr>
+<th align="center">代码元素</th>
+<th align="center">命名标准</th>
+<th align="center">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">对象宏（符号常量）</td>
+<td align="center">全大写+下划线</td>
+<td align="center">#define PI_ROUNDED 3.14</td>
+</tr>
+<tr>
+<td align="center">宏函数（带参数的宏）</td>
+<td align="center">小写字母+下划线，注意用括号保护</td>
+<td align="center">#define max(x, y)  ((x) &gt; (y) ? (x) : (y))<br/> #define get motor_measure(ptr, data){}</td>
+</tr>
+<tr>
+<td align="center">函数名</td>
+<td align="center">小写字母+下划线</td>
+<td align="center">static void chassis_follow_gimbal_handler(void)</td>
+</tr>
+<tr>
+<td align="center">变量</td>
+<td align="center">小写字母+下划线</td>
+<td align="center">uint16_t current_health;</td>
+</tr>
+<tr>
+<td align="center">常量</td>
+<td align="center">全大写+下划线</td>
+<td align="center">const float PI &#x3D; 3.14159;</td>
+</tr>
+<tr>
+<td align="center">类型定义和结构体</td>
+<td align="center">小写字母+下划线（类型定义加<code>_t</code>后缀）</td>
+<td align="center">chassis_control_t chassis_control &#x3D; {0}; <br/> typedef unsigned int uint32_t;</td>
+</tr>
+<tr>
+<td align="center">枚举类型名</td>
+<td align="center">小写字母+下划线+<code>_t</code></td>
+<td align="center">typedef enum<br/>{<br/>	HEALTH_NORMAL, &#x2F;&#x2F; 正常模式<br/>	HEALTH_HURT	   &#x2F;&#x2F; 受伤旋转模式<br/>} health_state_t;</td>
+</tr>
+<tr>
+<td align="center">枚举值</td>
+<td align="center">全大写+下划线</td>
+<td align="center">见上</td>
+</tr>
+<tr>
+<td align="center">布尔变量&#x2F;函数</td>
+<td align="center">使用<code>is_</code>, <code>has_</code>作为前缀</td>
+<td align="center">bool is_valid;</td>
+</tr>
+<tr>
+<td align="center">指针变量</td>
+<td align="center">加<code>p_</code>前缀或<code>ptr</code>后缀</td>
+<td align="center">char *p_name;</td>
+</tr>
+</tbody></table>
+<p><strong>（2）标识符的命名要清晰、明了，有明确含义，同时使用完整的单词或大家基本可以理解的缩写，避免使人产生误解</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GOOD</span></span><br><span class="line"><span class="type">uint8_t</span> chassis_control_mode;</span><br><span class="line"><span class="type">int</span> error_number;</span><br><span class="line"><span class="type">int</span> give_current;</span><br><span class="line"><span class="comment">// BAD</span></span><br><span class="line"><span class="type">uint8_t</span> controlm;</span><br><span class="line"><span class="type">int</span> nerr;</span><br><span class="line"><span class="type">int</span> g_cur;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）除了常见的通用缩写以外，不使用单词缩写，不得使用汉语拼音</strong></p>
+<p>协议中的单词的缩写与协议保持一致。对于某个系统使用的专用缩写应该在注视或者某处做统一说明。</p>
+<p>在RM语境和通用编码语境中，以下缩写被广泛认可：</p>
+<table>
+<thead>
+<tr>
+<th>原单词</th>
+<th>缩写</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>argument</td>
+<td>arg</td>
+<td>参数</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>buff</td>
+<td>缓冲区</td>
+</tr>
+<tr>
+<td>clock</td>
+<td>clk</td>
+<td>时钟</td>
+</tr>
+<tr>
+<td>command</td>
+<td>cmd</td>
+<td>命令</td>
+</tr>
+<tr>
+<td>compare</td>
+<td>cmp</td>
+<td>比较</td>
+</tr>
+<tr>
+<td>configuration</td>
+<td>cfg</td>
+<td>配置</td>
+</tr>
+<tr>
+<td>device</td>
+<td>dev</td>
+<td>设备</td>
+</tr>
+<tr>
+<td>error</td>
+<td>err</td>
+<td>错误</td>
+</tr>
+<tr>
+<td>hexadecimal</td>
+<td>hex</td>
+<td>十六进制</td>
+</tr>
+<tr>
+<td>increment</td>
+<td>inc</td>
+<td>递增</td>
+</tr>
+<tr>
+<td>initialize</td>
+<td>init</td>
+<td>初始化</td>
+</tr>
+<tr>
+<td>maximum</td>
+<td>max</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>message</td>
+<td>msg</td>
+<td>消息</td>
+</tr>
+<tr>
+<td>minimum</td>
+<td>min</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td>para</td>
+<td>参数</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>prev</td>
+<td>上一个&#x2F;先前的</td>
+</tr>
+<tr>
+<td>register</td>
+<td>reg</td>
+<td>寄存器</td>
+</tr>
+<tr>
+<td>semaphore</td>
+<td>sem</td>
+<td>信号量</td>
+</tr>
+<tr>
+<td>statistic</td>
+<td>stat</td>
+<td>统计</td>
+</tr>
+<tr>
+<td>synchronize</td>
+<td>sync</td>
+<td>同步</td>
+</tr>
+<tr>
+<td>temp</td>
+<td>tmp</td>
+<td>临时</td>
+</tr>
+<tr>
+<td>remote control</td>
+<td>rc</td>
+<td>遥控器</td>
+</tr>
+<tr>
+<td>encoder</td>
+<td>enc</td>
+<td>编码器</td>
+</tr>
+<tr>
+<td>encoder</td>
+<td>ecd</td>
+<td>编码器（建议统一）</td>
+</tr>
+<tr>
+<td>Inertial Navigation System</td>
+<td>ins</td>
+<td>惯性导航系统</td>
+</tr>
+<tr>
+<td>navigation</td>
+<td>nav</td>
+<td>导航</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>dist</td>
+<td>距离</td>
+</tr>
+<tr>
+<td>low pass filter</td>
+<td>lpf</td>
+<td>低通滤波器</td>
+</tr>
+<tr>
+<td>coefficient</td>
+<td>coeff</td>
+<td>系数</td>
+</tr>
+<tr>
+<td>function</td>
+<td>func</td>
+<td>函数</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>spd</td>
+<td>速度</td>
+</tr>
+<tr>
+<td>average</td>
+<td>avg</td>
+<td>平均</td>
+</tr>
+</tbody></table>
+<p><strong>（4）用正确的反义词组命名具有互斥意义的变量或相反动作的函数等</strong></p>
+<table>
+<thead>
+<tr>
+<th>正</th>
+<th>反</th>
+<th>正</th>
+<th>反</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>remove</td>
+<td>lock</td>
+<td>unlock</td>
+</tr>
+<tr>
+<td>begin</td>
+<td>end</td>
+<td>open</td>
+<td>close</td>
+</tr>
+<tr>
+<td>create</td>
+<td>destroy</td>
+<td>min</td>
+<td>max</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>delete</td>
+<td>old</td>
+<td>new</td>
+</tr>
+<tr>
+<td>first</td>
+<td>last</td>
+<td>start</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>get</td>
+<td>release</td>
+<td>next</td>
+<td>previous</td>
+</tr>
+<tr>
+<td>increment</td>
+<td>decrement</td>
+<td>source</td>
+<td>target</td>
+</tr>
+<tr>
+<td>put</td>
+<td>get</td>
+<td>show</td>
+<td>hide</td>
+</tr>
+<tr>
+<td>add</td>
+<td>delete</td>
+<td>send</td>
+<td>receive</td>
+</tr>
+<tr>
+<td>up</td>
+<td>down</td>
+<td>source</td>
+<td>destination</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>disable</td>
+<td>copy</td>
+<td>paste</td>
+</tr>
+</tbody></table>
+<p><strong>（5） 防止局部变量与全局变量同名</strong></p>
+<blockquote>
+<p> 尽管局部变量和全局变量的作用域不同而不会发生语法错误，但容易使人误解。</p>
+</blockquote>
+<h3 id="2-非强制要求的规则"><a href="#2-非强制要求的规则" class="headerlink" title="2 非强制要求的规则"></a>2 非强制要求的规则</h3><h4 id="2-1-源文件"><a href="#2-1-源文件" class="headerlink" title="2.1 源文件"></a>2.1 源文件</h4><p><strong>（1）if 、 for 、 do 、 while 、 case 、 switch 、 default 等语句独占一行</strong></p>
+<p>执行语句必须用缩进风格写，属于if、for、do、while、case、switch、default等下一个缩进级别；</p>
+<p>一般写if、for、do、while等语句都会有成对出现的„{}‟，对此有如下建议可以参考</p>
+<ul>
+<li>if、for、do、while等语句后的执行语句建议增加成对的“{}”</li>
+<li>如果if&#x2F;else配套语句中有一个分支有“{}”，那么另一个分支即使一行代码也建议增加“{}”</li>
+<li>添加“{”的位置可以在if等语句后，也可以独立占下一行</li>
+<li>独立占下一行时，可以和if在一个缩进级别，也可以在下一个缩进级别</li>
+<li>但是如果if语句很长，或者已经有换行，建议“{”使用独占一行的写法。</li>
+</ul>
+<p><strong>（2）对于 switch语句下的case语句，如果因为特殊情况需要处理完一个case后进入下一个case处理，必须在该case语句处理完、下一个case语句前加上明确的注释</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这样比较清楚程序编写者的意图，有效防止无故遗漏break语句。</span></span><br><span class="line"><span class="keyword">case</span> CMD_FWD:</span><br><span class="line">    ProcessFwd();</span><br><span class="line">    <span class="comment">/* now jump into c ase CMD_A */</span></span><br><span class="line"><span class="keyword">case</span> CMD_A:</span><br><span class="line">    ProcessA();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="comment">//对于中间无处理的连续case，已能较清晰说明意图，不强制注释。</span></span><br><span class="line"><span class="keyword">switch</span> (cmd_flag)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> CMD_A:</span><br><span class="line">        <span class="keyword">case</span> CMD_B:</span><br><span class="line">    &#123;</span><br><span class="line">        ProcessCMD();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-函数"><a href="#2-2-函数" class="headerlink" title="2.2 函数"></a>2.2 函数</h4><p><strong>（1） 设计高扇入，合理扇出（小于7）的函数。</strong></p>
+<p>较良好的软件结构通常是顶层函数的扇出较高，中层函数的扇出较少，而底层函数则扇入到公共模块中。</p>
+<blockquote>
+<p>扇出：一个函数直接调用（控制）其它函数的数目</p>
+<p>扇入：有多少上级函数调用它</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c2724caf7d97080c929064756451eec1.png" class="lazyload" data-srcset="https://i-blog.csdnimg.cn/blog_migrate/c2724caf7d97080c929064756451eec1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<p> <strong>（2）函数的参数个数不超过5个</strong></p>
+<p> <strong>（3）可重入函数应避免使用共享变量；若需要使用，则应通过互斥手段（关中断、信号量）对其加以保护</strong></p>
+<blockquote>
+<p>可重入函数：可能被多个任务并发调用的函数。</p>
+<p>共享变量：全局变量和static变量。</p>
+<p>编写C语言的可重入函数时，不应使用static局部变量，否则必须经过特殊处理，才能使函数具有可重入性。</p>
+</blockquote>
+<p>eg：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不可重入：若被多个线程调用的话，其结果可能是未知的</span></span><br><span class="line"><span class="comment">//因为当（**）语句刚执行完后，另外一个使用本函数的线程可能正好被激活，那么当新激活的线程执行到此函数时，将使g_exam赋于另一个不同的para值，所以当控制重新回到“temp =square_exam ( )”后，计算出的temp很可能不是预想中的结果。</span></span><br><span class="line"><span class="type">int</span> g_exam;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">example</span><span class="params">( <span class="type">int</span> para )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> temp;</span><br><span class="line">    g_exam = para; <span class="comment">// （**）</span></span><br><span class="line">    temp = square_exam (  );</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//改进</span></span><br><span class="line"><span class="type">int</span> g_exam;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">example</span><span class="params">( <span class="type">int</span> para )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> temp;</span><br><span class="line">    [申请信号量操作] <span class="comment">// 若申请不到“信号量”，说明另外的进程正处于</span></span><br><span class="line">    g_exam = para; <span class="comment">//给g_exam赋值并计算其平方过程中（即正在使用此</span></span><br><span class="line">    temp = square_exam( g_exam ); <span class="comment">// 信号），本进程必须等待其释放信号后，才可继</span></span><br><span class="line">    [释放信号量操作] <span class="comment">// 续执行。其它线程必须等待本线程释放信号量后</span></span><br><span class="line">    <span class="comment">// 才能再使用本信号。</span></span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-结构体"><a href="#2-3-结构体" class="headerlink" title="2.3 结构体"></a>2.3 结构体</h4><p><strong>（1）保持结构体功能单一</strong> </p>
+<p>​	    相关的一组信息才是构成一个结构体的基础，结构的定义应该可以明确的描述一个对象，而不是一组相关性不强的数据的集合。设计结构时应力争使结构代表一种现实事务的抽象，而不是同时代表多种。结构中的各元素应代表同一事务的不同侧面，而不应把描述没有关系或关系很弱的不同事务的元素放到同一结构中。</p>
+<p>eg：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="type">float</span> min_angle; <span class="comment">// 当前pitch巡航模式下的最小角度</span></span><br><span class="line">	<span class="type">float</span> max_angle; <span class="comment">// 当前pitch巡航模式下的最大角度</span></span><br><span class="line">	<span class="type">float</span> step;		 <span class="comment">// 当前pitch巡航模式下每次的步进角度</span></span><br><span class="line">&#125; PitchSwingParams; <span class="comment">//pitch导航模式下自主巡航参数结构体</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	fp32 INS_speed;</span><br><span class="line">	fp32 INS_speed_last;</span><br><span class="line">	fp32 INS_speed_set;</span><br><span class="line">	fp32 INS_speed_set_last;</span><br><span class="line">	fp32 INS_angle;</span><br><span class="line">	fp32 INS_angle_set;</span><br><span class="line">	fp32 ENC_angle;</span><br><span class="line">	fp32 ENC_speed;</span><br><span class="line">	fp32 ENC_angle_actual;</span><br><span class="line">	fp32 ENC_angle_set;</span><br><span class="line">	<span class="type">int16_t</span> give_current;</span><br><span class="line"></span><br><span class="line">	pid_type_def speed_pid;</span><br><span class="line">	pid_type_def angle_pid;</span><br><span class="line">	pid_type_def auto_aim_pid;</span><br><span class="line">&#125; <span class="type">gimbal_motor_t</span>; <span class="comment">// 云台yaw轴6020结构体</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-注释"><a href="#2-4-注释" class="headerlink" title="2.4 注释"></a>2.4 注释</h4><blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://sjtu-robomaster-team.github.io/cpp-style-guide/">https://sjtu-robomaster-team.github.io/cpp-style-guide/</a></p>
 </blockquote>
-<h4 id="缩进和行宽"><a href="#缩进和行宽" class="headerlink" title="缩进和行宽"></a>缩进和行宽</h4><ul>
-<li>使用空格，而不是 Tab。</li>
-<li>每级缩进使用 4 个空格（也就是说在纯字符串和注释之外的缩进都是 4 的倍数）。</li>
-<li>行宽最大为 100。</li>
-</ul>
-<h4 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h4><p>不同的语句之间要么不空行，要么空一行。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = ...;<span class="comment">//空一行</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> y = ...;</span><br><span class="line">    <span class="type">int</span> z = ...;</span><br><span class="line">&#125;<span class="comment">//空一行</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">bar</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">baz</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<ul>
 <li>行注释（<code>//</code>）相较于块注释（<code>/* ... */</code>）更好。</li>
 <li>当使用行注释时，开头标记后应该有一个空格。</li>
 <li>使用行内块注释时，开符号后和闭符号前均有一个空格。多行块注释，开符号后和闭符号前均有一个新行。</li>
@@ -2556,19 +2946,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>注释应是完整的句子，行内块注释则不用。</li>
 <li>纯注释行的注释宽度不大于 80，且算上缩进总宽度不超过 100。</li>
 </ul>
-<hr>
-<ul>
-<li><p>头文件</p>
-</li>
-<li><p>源文件</p>
-</li>
-<li><p>函数</p>
-</li>
-<li><p>变量、宏、常量</p>
-</li>
-<li><p>命名（RM习惯）</p>
-</li>
-</ul>
+<h4 id="2-5-格式化要求"><a href="#2-5-格式化要求" class="headerlink" title="2.5 格式化要求"></a>2.5 格式化要求</h4><p>​	本人是懒狗，亲测github自带的格式化功能够用**（快捷键shift+alt+f)** ，其他格式化要求不过多赘述，好奇的话可以看看<a target="_blank" rel="noopener" href="https://sjtu-robomaster-team.github.io/cpp-style-guide/">交龙代码规范</a>的格式化约定部分</p>
 
   </div>
   
@@ -2625,10 +3003,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-10T19:56:42+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-08-12T19:14:54+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2025年8月10日</p>
+    <p>更新于：2025年8月12日</p>
   </a>
 </div>
 
@@ -2759,7 +3137,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-text">代码总体原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">具体代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">1. 必须遵守的代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E6%96%87%E4%BB%B6"><span class="toc-text">1.1文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-%E6%96%B0%E5%A2%9E%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.1.1 新增的代码文件的放置位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 文件头注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-3-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">1.1.3 头文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-4-%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-text">1.1.4 源文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B%E5%92%8C%E8%A1%8C%E5%AE%BD"><span class="toc-text">缩进和行宽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E8%A1%8C"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%BB%E4%BD%93%E5%8E%9F%E5%88%99"><span class="toc-text">代码总体原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">具体代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">1. 必须遵守的代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E6%96%87%E4%BB%B6"><span class="toc-text">1.1文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-%E6%96%B0%E5%A2%9E%E7%9A%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.1.1 新增的代码文件的放置位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 文件头注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-3-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-text">1.1.3 头文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-4-%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-text">1.1.4 源文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%87%BD%E6%95%B0"><span class="toc-text">1.2 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%91%BD%E5%90%8D"><span class="toc-text">1.3 命名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9D%9E%E5%BC%BA%E5%88%B6%E8%A6%81%E6%B1%82%E7%9A%84%E8%A7%84%E5%88%99"><span class="toc-text">2 非强制要求的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-text">2.1 源文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%87%BD%E6%95%B0"><span class="toc-text">2.2 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">2.3 结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E6%B3%A8%E9%87%8A"><span class="toc-text">2.4 注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%A6%81%E6%B1%82"><span class="toc-text">2.5 格式化要求</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
@@ -3378,7 +3756,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】起源嵌入式软件代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】起源嵌入式软件代码规范","description":"本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":44,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-10T11:56:42.362Z","keywords":"#RoboMaster,#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/07/30/【RM】电控代码规范/","name":"【RM】起源嵌入式软件代码规范"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【RM】起源嵌入式软件代码规范","description":"本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/","wordCount":44,"datePublished":"2025-07-29T16:00:00.000Z","dateModified":"2025-08-12T11:14:54.109Z","keywords":"#RoboMaster,#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
