@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/tags/嵌入式/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/09/09/【嵌入式】freertos学习笔记（持续更新）/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>标签：#嵌入式 - Shiki's Blog</title>
-  <meta name="keywords" content="null">
-  <meta desc name="description" content="Shiki's Blog - Shiki - Shiki's Blog">
+  <title>【嵌入式】FreeRTOS学习笔记（持续更新） - Shiki's Blog</title>
+  <meta name="keywords" content="#嵌入式,null">
+  <meta desc name="description" content="阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记 - Shiki - Shiki's Blog">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shiki&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【嵌入式】FreeRTOS学习笔记（持续更新）">
+<meta property="og:url" content="http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/index.html">
 <meta property="og:site_name" content="Shiki&#39;s Blog">
-<meta property="og:description" content="Shiki&#39;s Blog">
+<meta property="og:description" content="阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-09-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-10T04:23:11.463Z">
 <meta property="article:author" content="Shiki">
+<meta property="article:tag" content="#嵌入式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2354,7 +2357,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  focus' style="display: none;">
+      <div id="none" class='cover-wrapper post focus' style="display: none;">
         
   <div id="parallax-window"></div>
 
@@ -2384,28 +2387,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/09/【嵌入式】FreeRTOS学习笔记（持续更新）/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Shiki's Blog">
@@ -2415,162 +2398,268 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="Shiki's Blog">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         【嵌入式】FreeRTOS学习笔记（持续更新）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-09-09T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年9月9日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="第一部分：从0到1写FreeRTOS内核"><a href="#第一部分：从0到1写FreeRTOS内核" class="headerlink" title="第一部分：从0到1写FreeRTOS内核"></a>第一部分：从0到1写FreeRTOS内核</h2><h3 id="一-初识FreeRTOS"><a href="#一-初识FreeRTOS" class="headerlink" title="一.  初识FreeRTOS"></a>一.  初识FreeRTOS</h3><h4 id="1-1-FreeRTOS官方资料获取"><a href="#1-1-FreeRTOS官方资料获取" class="headerlink" title="1.1 FreeRTOS官方资料获取"></a>1.1 FreeRTOS官方资料获取</h4><p>各版本源码：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/freertos/files/FreeRTOS/">FreeRTOS Real Time Kernel (RTOS) - Browse &#x2F;FreeRTOS at SourceForge.net</a></p>
+<p>官网(包含各种文档，教程)：<a target="_blank" rel="noopener" href="https://www.freertos.org/zh-cn-cmn-s">FreeRTOS™ - FreeRTOS™</a></p>
+<h4 id="1-2-FreeRTOS编程风格"><a href="#1-2-FreeRTOS编程风格" class="headerlink" title="1.2 FreeRTOS编程风格"></a>1.2 FreeRTOS编程风格</h4><h5 id="1-2-1-数据类型"><a href="#1-2-1-数据类型" class="headerlink" title="1.2.1 数据类型"></a>1.2.1 数据类型</h5><p>1.对标准C的数据类型进行重定义，在<strong>portmacro.h</strong>中实现</p>
+<p>2.int型从不使用，原因：int的大小依赖编译器和处理器架构，无法保证跨平台移植的一致性。</p>
+<p>3.使用short和long来代替int（<strong>在Cortex-M内核的MCU中，short为16位，long为32位</strong>）</p>
+<h5 id="1-2-2-变量名"><a href="#1-2-2-变量名" class="headerlink" title="1.2.2 变量名"></a>1.2.2 变量名</h5><p>1.习惯把变量前缀加在变量上，见变量知类型</p>
+<p>2.变量前缀与类型的对照表</p>
+<table>
+<thead>
+<tr>
+<th align="center">前缀</th>
+<th align="center">对应的变量类型(含义)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">c</td>
+<td align="center">char</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">short</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">long</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">portBASE_TYPE,其他数据类型（数据结构，句柄）</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">unsigned</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">指针</td>
+</tr>
+</tbody></table>
+<h3 id="二-基于keil新建freertos工程（软件仿真）"><a href="#二-基于keil新建freertos工程（软件仿真）" class="headerlink" title="二. 基于keil新建freertos工程（软件仿真）"></a>二. 基于keil新建freertos工程（软件仿真）</h3><h4 id="2-1-Select-Device-for-Target时如何选择ARM和STMicroelectronics"><a href="#2-1-Select-Device-for-Target时如何选择ARM和STMicroelectronics" class="headerlink" title="2.1 Select Device for Target时如何选择ARM和STMicroelectronics"></a>2.1 Select Device for Target时如何选择ARM和STMicroelectronics</h4><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>选择 “ARM”（通用内核）</th>
+<th>选择 “STMicroelectronics”（具体 MCU）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>ARM 内核抽象模型</td>
+<td>ST 基于 ARM 内核设计的具体芯片</td>
+</tr>
+<tr>
+<td>包含外设</td>
+<td>无（仅内核逻辑）</td>
+<td>有（ST 定制的 GPIO、UART 等所有外设）</td>
+</tr>
+<tr>
+<td>驱动支持</td>
+<td>不支持厂商库（无外设定义）</td>
+<td>支持 HAL 库、标准库等厂商驱动</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>学习 ARM 内核原理、纯算法验证</td>
+<td>实际 STM32 开发（操作硬件、跑项目）</td>
+</tr>
+<tr>
+<td>调试与下载</td>
+<td>无法直接匹配硬件（需手动配置）</td>
+<td>自动匹配芯片，支持下载调试</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-关于main函数"><a href="#2-2-关于main函数" class="headerlink" title="2.2 关于main函数"></a>2.2 关于main函数</h4><p>​		<strong>一个工程没有main函数是无法编译成功的</strong>。系统在开始运行时会先执行启动文件中的复位程序，复位程序会调用C库函数__main, __main会在初始化各个数据段后调用main函数，如果没有编写main函数会出现maina函数未定义的错误。</p>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-09-09T00:00:00+08:00">2025-09-09</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-10T12:23:11+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年9月10日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/08/【嵌入式】嵌入式软件优质学习资料整理/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Shiki's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Shiki's Blog">
-    <meta itemprop="description" content="Shiki's Blog">
-  </span>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>#嵌入式</p></a></div>
+  <span hidden itemprop="keywords">#嵌入式</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/&title=【嵌入式】FreeRTOS学习笔记（持续更新） - Shiki's Blog&summary=阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/&title=【嵌入式】FreeRTOS学习笔记（持续更新） - Shiki's Blog&summary=阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/&title=【嵌入式】FreeRTOS学习笔记（持续更新） - Shiki's Blog&summary=阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记"
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/09/08/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BC%98%E8%B4%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/'>
+          <p class='title'>【嵌入式】嵌入式软件优质学习资料整理（MCU+RTOS）<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'></p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/09/08/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BC%98%E8%B4%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/"  itemprop="url">
-        【嵌入式】嵌入式软件优质学习资料整理（MCU+RTOS）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      shiki的嵌入式学习资料库（MCU+RTOS）
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-09-08T00:00:00+08:00">2025-09-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/09/08/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E4%BC%98%E8%B4%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/30/【RM】电控代码规范/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Shiki's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Shiki's Blog">
-    <meta itemprop="description" content="Shiki's Blog">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"  itemprop="url">
-        【RM】起源嵌入式软件代码规范
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      本文为起源Origin战队嵌入式软件代码规范V1.0，尚未完善，如有错误，欢迎评论区指正
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-07-30T00:00:00+08:00">2025-07-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/07/30/%E3%80%90RM%E3%80%91%E7%94%B5%E6%8E%A7%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2579,64 +2668,44 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' target="_blank" rel="noopener" href='https://github.com/shiki0311/'>
-          <img no-lazy src='https://github.com/shiki0311/shiki0311.github.io/blob/main/img/banner_img/blog_profile_picture.jpg?raw=true'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Shiki</h2>
-        
-        
-          <p>日拱一卒，功不唐捐<br><br></p>
-
-        
-        
-      </div>
-    
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/RoboMaster/" style="font-size: 14px; color: #999">#RoboMaster</a> <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" style="font-size: 24px; color: #555">#嵌入式</a>
-    </div>
-  </section>
-
-
     
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E4%BB%8E0%E5%88%B01%E5%86%99FreeRTOS%E5%86%85%E6%A0%B8"><span class="toc-text">第一部分：从0到1写FreeRTOS内核</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%88%9D%E8%AF%86FreeRTOS"><span class="toc-text">一.  初识FreeRTOS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-FreeRTOS%E5%AE%98%E6%96%B9%E8%B5%84%E6%96%99%E8%8E%B7%E5%8F%96"><span class="toc-text">1.1 FreeRTOS官方资料获取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-FreeRTOS%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC"><span class="toc-text">1.2 FreeRTOS编程风格</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.2.1 数据类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-%E5%8F%98%E9%87%8F%E5%90%8D"><span class="toc-text">1.2.2 变量名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%9F%BA%E4%BA%8Ekeil%E6%96%B0%E5%BB%BAfreertos%E5%B7%A5%E7%A8%8B%EF%BC%88%E8%BD%AF%E4%BB%B6%E4%BB%BF%E7%9C%9F%EF%BC%89"><span class="toc-text">二. 基于keil新建freertos工程（软件仿真）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Select-Device-for-Target%E6%97%B6%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9ARM%E5%92%8CSTMicroelectronics"><span class="toc-text">2.1 Select Device for Target时如何选择ARM和STMicroelectronics</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%85%B3%E4%BA%8Emain%E5%87%BD%E6%95%B0"><span class="toc-text">2.2 关于main函数</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2668,13 +2737,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3087,6 +3157,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 
+        <style>
+  #post-body p {
+    text-indent: 2em;
+  }
+  #post-body .new-meta-box p,
+  #post-body .note p,
+  #post-body .prev-next p,
+  #post-body .tag p,
+  #post-body blockquote p,
+  #post-body details p,
+  #post-body p.p,
+  #post-body .tab-pane .checkbox
+  #post-body section p {
+    text-indent: initial;
+  }
+</style>
+
+
+
 </pjax>
 
 <script>
@@ -3218,7 +3307,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/tags/#嵌入式/","name":"#嵌入式"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"Shiki's Blog","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/09/09/【嵌入式】FreeRTOS学习笔记（持续更新）/","name":"【嵌入式】FreeRTOS学习笔记（持续更新）"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【嵌入式】FreeRTOS学习笔记（持续更新）","description":"阅读书籍：“FreeRTOS内核实现与应用开发指南”及其他freertos资料的学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/09/09/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91FreeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/","wordCount":44,"datePublished":"2025-09-08T16:00:00.000Z","dateModified":"2025-09-10T04:23:11.463Z","keywords":"#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
