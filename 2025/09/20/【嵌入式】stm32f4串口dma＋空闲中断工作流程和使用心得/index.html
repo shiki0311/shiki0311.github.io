@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-09-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-20T08:37:30.475Z">
+<meta property="article:modified_time" content="2025-09-20T10:41:22.207Z">
 <meta property="article:author" content="Shiki">
 <meta property="article:tag" content="#嵌入式">
 <meta name="twitter:card" content="summary">
@@ -1694,7 +1694,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1758357774014),
+    lastupdate: new Date(1758364904508),
     sidebar: {
       for_page: ["blogger","tagcloud"],
       for_post: ["toc"],
@@ -2450,41 +2450,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>cubemx基本帮不了任何忙，只能配配串口和DMA最基本的参数</p>
 </blockquote>
 <p>主要记录一下用于<strong>串口接收不定长数据下cubemx中dma的参数</strong>：</p>
-<ul>
-<li><p>mode: normal </p>
+<p>1.mode: normal </p>
 <p>原因： 串口空闲中断的核心需求是<strong>识别不定长数据帧的边界</strong>（通过 IDLE 事件判断一帧结束），而 Circular 模式的 “自动循环覆盖” 特性会与这个需求冲突。具体表现为Circular 模式下，DMA 始终处于运行状态，即使触发了 IDLE 中断（一帧结束），DMA 仍可能在处理中断的同时继续传输新数据（若新数据恰好到来），导致当前帧数据被新数据污染。</p>
-</li>
-<li><p>direction和priority: 这两个没啥好说的，根据实际需求配</p>
-</li>
-<li><p>use fifo: false</p>
-<p>原因：（1）FIFO 模式会引入一定的缓冲延迟（等待数据积累到阈值），不适合串口通信这种对实时性要求较高的场景。</p>
-<p>​            （2）串口的速度（115200bit&#x2F;s)本身远远低于内存速度，不存在内存接收数据速度跟不上串口向dma发送数据的速度从而导致数据丢失</p>
-</li>
-<li><p>地址自增模式（Increment Mode）</p>
-<ul>
-<li><strong>Peripheral Increment</strong>（外设地址自增）：<ul>
-<li>禁用（<code>Disable</code>）：外设地址固定（如 UART 的 DR 寄存器，每次传输都从该地址读取 &#x2F; 写入）。</li>
-</ul>
-</li>
-<li><strong>Memory Increment</strong>（内存地址自增）：<ul>
-<li>启用（<code>Enable</code>）：内存地址自动递增（缓冲区为数组，需要一个字节一个字节按时间顺序填充）。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>data width: byte</p>
+<p>2.direction和priority: 这两个没啥好说的，根据实际需求配</p>
+<p>3.use fifo: false</p>
+<p>原因:（1）FIFO 模式会引入一定的缓冲延迟（等待数据积累到阈值），不适合串口通信这种对实时性要求较高的场景。</p>
+<p>​		 （2）串口的速度（115200bit&#x2F;s)本身远远低于内存速度，不存在内存接收数据速度跟不上串口向dma发送数据的速度从而导致数		据丢失</p>
+<p> 4.地址自增模式（Increment Mode）</p>
+<p>​		<strong>Peripheral Increment</strong>（外设地址自增）：</p>
+<p>​		<strong>禁用</strong>（<code>Disable</code>）：外设地址固定（如 UART 的 DR 寄存器，每次传输都从该地址读取 &#x2F; 写入）。</p>
+<p>​		<strong>Memory Increment</strong>（内存地址自增）：</p>
+<p>​		<strong>启用</strong>（<code>Enable</code>）：内存地址自动递增（缓冲区为数组，需要一个字节一个字节按时间顺序填充）。</p>
+<p>5.data width: byte</p>
 <p>原因：usart串口外设的接收数据寄存器（DR）是八位单字节寄存器，而该寄存器作为dma搬运的源地址也就说明搬运的数据大小就是一字节</p>
-</li>
-</ul>
 <p>​	</p>
 <h2 id="2-我们自己代码中需要配置的部分"><a href="#2-我们自己代码中需要配置的部分" class="headerlink" title="2.  我们自己代码中需要配置的部分"></a>2.  我们自己代码中需要配置的部分</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Referee_UARTInit</span><span class="params">(<span class="type">uint8_t</span> *Buffer0, <span class="type">uint8_t</span> *Buffer1, <span class="type">uint16_t</span> BufferLength)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/* 使能串口DMA */</span></span><br><span class="line">	SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR);</span><br><span class="line">	SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 使能串口空闲中断 */</span></span><br><span class="line">	__HAL_UART_ENABLE_IT(&amp;Referee_UART, UART_IT_IDLE);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 确保DMA RX失能 */</span></span><br><span class="line">	<span class="keyword">while</span> (Referee_UART.hdmarx-&gt;Instance-&gt;CR &amp; DMA_SxCR_EN)</span><br><span class="line">	&#123;</span><br><span class="line">		__HAL_DMA_DISABLE(Referee_UART.hdmarx);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 清空标志位 */</span></span><br><span class="line">	__HAL_DMA_CLEAR_FLAG(Referee_UART.hdmarx, DMA_LISR_TCIF1);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 设置接收双缓冲区 */</span></span><br><span class="line">	Referee_UART.hdmarx-&gt;Instance-&gt;PAR = (<span class="type">uint32_t</span>)&amp;(Referee_UART.Instance-&gt;DR);</span><br><span class="line">	Referee_UART.hdmarx-&gt;Instance-&gt;M0AR = (<span class="type">uint32_t</span>)(Buffer0);</span><br><span class="line">	Referee_UART.hdmarx-&gt;Instance-&gt;M1AR = (<span class="type">uint32_t</span>)(Buffer1);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 设置一次DMA传输数据的长度（NDTR寄存器的值，每开启一次DMA传输这个值就会从设定值开始随着数据传输递减，递减到0视作传输完成 */</span></span><br><span class="line">	__HAL_DMA_SET_COUNTER(Referee_UART.hdmarx, BufferLength);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 使能双缓冲区 */</span></span><br><span class="line">	SET_BIT(Referee_UART.hdmarx-&gt;Instance-&gt;CR, DMA_SxCR_DBM);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 使能DMA RX */</span></span><br><span class="line">	__HAL_DMA_ENABLE(Referee_UART.hdmarx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里放一段经典的基于hal库的串口空闲中断加dma双缓冲区的初始化代码，<strong>需要注意的有以下几点</strong>：</p>
-<h4 id="1-SET-BIT-Referee-UART-Instance-CR3-USART-CR3-DMAR-和-HAL-DMA-ENABLE-Referee-UART-hdmarx-的区别"><a href="#1-SET-BIT-Referee-UART-Instance-CR3-USART-CR3-DMAR-和-HAL-DMA-ENABLE-Referee-UART-hdmarx-的区别" class="headerlink" title="1.SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)和__HAL_DMA_ENABLE(Referee_UART.hdmarx)的区别"></a>1.SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)和__HAL_DMA_ENABLE(Referee_UART.hdmarx)的区别</h4><blockquote>
+<h4 id="1-SET-BIT-Referee-UART-Instance-CR3-USART-CR3-DMAR-和-HAL-DMA-ENABLE-Referee-UART-hdmarx-的区别"><a href="#1-SET-BIT-Referee-UART-Instance-CR3-USART-CR3-DMAR-和-HAL-DMA-ENABLE-Referee-UART-hdmarx-的区别" class="headerlink" title="1.SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)和__HAL_DMA_ENABLE(Referee_UART.hdmarx)的区别"></a><strong>1.SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)和__HAL_DMA_ENABLE(Referee_UART.hdmarx)的区别</strong></h4><blockquote>
 <p>代码的注释分别写的是使能串口DMA和使能DMA,好像看起来没啥区别？ <strong>nonono</strong></p>
 </blockquote>
-<p>​	**SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)**的操作对象是UART 外设的控制寄存器 3（<code>CR3</code>），作用是置位UART 的 “DMA 接收使能位，也就是允许 UART 在收到外界发来的数据时向 DMA 控制器发送 “传输请求信号”。简单说：<strong>这是 UART 侧的 “开关”，打开后 UART 才能通知 DMA“我有数据，快来搬”；如果不打开，即使 DMA 已启动，UART 也不会触发任何 DMA 请求，数据无法传输。</strong></p>
-<p>​	**__HAL_DMA_ENABLE(Referee_UART.hdmarx)**的操作对象是DMA 控制器的流控制寄存器（<code>CR</code>），作用是置位DMA数据流使能位，也就是启动 DMA 控制器，使其能够响应外设的请求并执行数据传输。简单说：<strong>这是 DMA 侧的 “开关”，打开后 DMA 才能 “干活”（接收 UART 的请求、搬运数据）；如果不打开，即使 UART 已允许发送请求，DMA 也不会响应，数据同样无法传输。</strong></p>
+<p>​	SET_BIT(Referee_UART.Instance-&gt;CR3, USART_CR3_DMAR)的操作对象是UART 外设的控制寄存器 3（<code>CR3</code>），作用是置位UART 的 “DMA 接收使能位，也就是允许 UART 在收到外界发来的数据时向 DMA 控制器发送 “传输请求信号”。简单说：<strong>这是 UART 侧的 “开关”，打开后 UART 才能通知 DMA“我有数据，快来搬”；如果不打开，即使 DMA 已启动，UART 也不会触发任何 DMA 请求，数据无法传输。</strong></p>
+<p>​	__HAL_DMA_ENABLE(Referee_UART.hdmarx)的操作对象是DMA 控制器的流控制寄存器（<code>CR</code>），作用是置位DMA数据流使能位，也就是启动 DMA 控制器，使其能够响应外设的请求并执行数据传输。简单说：<strong>这是 DMA 侧的 “开关”，打开后 DMA 才能 “干活”（接收 UART 的请求、搬运数据）；如果不打开，即使 UART 已允许发送请求，DMA 也不会响应，数据同样无法传输。</strong></p>
 <p>​	</p>
 <h4 id="2-为什么在配置DMA参数（DMA目标地址，DMA源地址，双缓冲区使能，DMA传输长度）之前要确保其是失能的？"><a href="#2-为什么在配置DMA参数（DMA目标地址，DMA源地址，双缓冲区使能，DMA传输长度）之前要确保其是失能的？" class="headerlink" title="2.为什么在配置DMA参数（DMA目标地址，DMA源地址，双缓冲区使能，DMA传输长度）之前要确保其是失能的？"></a>2.为什么在配置DMA参数（DMA目标地址，DMA源地址，双缓冲区使能，DMA传输长度）之前要确保其是失能的？</h4><p>​	当 DMA 的<code>CR</code>寄存器<code>EN</code>位（使能位）为 1 时，DMA 控制器处于 “运行状态”，此时硬件会持续监控传输请求并执行数据搬运。为保证传输的稳定性，STM32 的 DMA 硬件对部分关键寄存器（如<code>PAR</code>、<code>M0AR</code>、<code>M1AR</code>、<code>NDTR</code>、<code>CR</code>中的<code>DBM</code>位等）施加了限制：</p>
 <ul>
@@ -2501,7 +2488,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>自动更新内存地址（若配置了<code>MINC_ENABLE</code>）和剩余传输计数（<code>NDTR</code>寄存器减 1）。</li>
 <li>传输完成后，自动清除 UART 的<code>RXNE</code>标志，让 UART 可以接收下一个数据。</li>
 </ul>
-<h4 id="4-串口接收完一帧数据包后产生空闲中断"><a href="#4-串口接收完一帧数据包后产生空闲中断" class="headerlink" title="4.串口接收完一帧数据包后产生空闲中断"></a>4.串口接收完一帧数据包后产生空闲中断</h4><p>​		在dma与串口空闲中断搭配使用时，dma是不会完成“一次传输的”，因为设置的dma传输数据长度（NDTR寄存器的值）是接收缓冲区的大小，以确保缓冲区能容纳 “最大可能的一帧数据”（避免溢出）。因此 DMA 还没来得及将<code>NDTR</code>减到 0（即未完成预设的 “一次传输”），串口就已进入空闲状态，触发了空闲中断。<strong>在空闲中断中断中会重置NDTR的值并计算一帧消息的长度，然后开启下一次传输</strong>。</p>
+<h4 id="4-串口接收完一帧数据包后产生空闲中断"><a href="#4-串口接收完一帧数据包后产生空闲中断" class="headerlink" title="4.串口接收完一帧数据包后产生空闲中断"></a><strong>4.串口接收完一帧数据包后产生空闲中断</strong></h4><p>​		在dma与串口空闲中断搭配使用时，dma是不会完成“一次传输的”，因为设置的dma传输数据长度（NDTR寄存器的值）是接收缓冲区的大小，以确保缓冲区能容纳 “最大可能的一帧数据”（避免溢出）。因此 DMA 还没来得及将<code>NDTR</code>减到 0（即未完成预设的 “一次传输”），串口就已进入空闲状态，触发了空闲中断。<strong>在空闲中断中断中会重置NDTR的值并计算一帧消息的长度，然后开启下一次传输</strong>。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Size = <span class="number">512</span> - Referee_UART.hdmarx-&gt;Instance-&gt;NDTR; <span class="comment">//重置NDTR的值</span></span><br><span class="line">Referee_UART.hdmarx-&gt;Instance-&gt;NDTR = REFEREE_USART_RX_BUF_LENGHT;<span class="comment">//计算一帧消息的长度</span></span><br></pre></td></tr></table></figure>
 
 
@@ -2530,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-20T16:37:30+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-20T18:41:22+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2025年9月20日</p>
@@ -3293,7 +3280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/09/20/【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得/","name":"【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得","description":"笔者自己瞎琢磨的，主要记录自己遇到的坑，如有问题欢迎在评论区指出","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91stm32f4%E4%B8%B2%E5%8F%A3dma%EF%BC%8B%E7%A9%BA%E9%97%B2%E4%B8%AD%E6%96%AD%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%92%8C%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/09/20/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91stm32f4%E4%B8%B2%E5%8F%A3dma%EF%BC%8B%E7%A9%BA%E9%97%B2%E4%B8%AD%E6%96%AD%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%92%8C%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/","wordCount":32,"datePublished":"2025-09-19T16:00:00.000Z","dateModified":"2025-09-20T08:37:30.475Z","keywords":"#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"Shiki's Blog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Shiki's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/09/20/【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得/","name":"【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Shiki's Blog","url":"http://example.com/","keywords":null,"description":"Shiki's Blog","author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"Shiki's Blog"},"publisher":{"@type":"Organization","name":"Shiki's Blog","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"【嵌入式】stm32f4串口dma＋空闲中断工作流程和使用心得","description":"笔者自己瞎琢磨的，主要记录自己遇到的坑，如有问题欢迎在评论区指出","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/09/20/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91stm32f4%E4%B8%B2%E5%8F%A3dma%EF%BC%8B%E7%A9%BA%E9%97%B2%E4%B8%AD%E6%96%AD%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%92%8C%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"},"author":{"@type":"Person","name":"Shiki","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Shiki's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/09/20/%E3%80%90%E5%B5%8C%E5%85%A5%E5%BC%8F%E3%80%91stm32f4%E4%B8%B2%E5%8F%A3dma%EF%BC%8B%E7%A9%BA%E9%97%B2%E4%B8%AD%E6%96%AD%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%92%8C%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/","wordCount":32,"datePublished":"2025-09-19T16:00:00.000Z","dateModified":"2025-09-20T10:41:22.207Z","keywords":"#嵌入式","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
